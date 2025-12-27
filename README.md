@@ -1,4 +1,5 @@
-ji1)Selection sort without using dynamic memory allocation 
+1)Selection sort without using dynamic memory allocation
+ 
 Program: 
 #include <stdio.h> 
 void selectionSort(int arr[], int n) { int i, j, minIndex, temp;
