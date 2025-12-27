@@ -1,4 +1,4 @@
-1)Selection sort without using dynamic memory allocation 
+ji1)Selection sort without using dynamic memory allocation 
 Program: 
 #include <stdio.h> 
 void selectionSort(int arr[], int n) { int i, j, minIndex, temp;
@@ -916,4 +916,85 @@ return;
 postorder(root->left); postorder(root->right);
  printf("%d ", root->data); } 
 int main() { 
-struct Node* root = newNode(1); root->left = newNode(2); butqroot->right = newNode(3); root->left->left = newNode(4); root->left->right = newNode(5); printf("Inorder Traversal: "); inorder(root); printf("\nPreorder Traversal: "); preorder(root); 
+struct Node* root = newNode(1); root->left = newNode(2); butqroot->right = newNode(3); root->left->left = newNode(4); root->left->right = newNode(5); printf("Inorder Traversal: "); inorder(root); 
+printf("\nPreorder Traversal: "); preorder(root); 
+printf("\nPostorder Traversal: "); postorder(root); 
+return 0; } 
+
+30)Sparse matrix using linked list 
+
+Program: 
+#include <stdio.h> 
+#include <stdlib.h> 
+struct Node { 
+int row, col, value; 
+struct Node* next; }; 
+struct Node* head = NULL; 
+void insert(int r, int c, int val) { struct Node* newNode = (struct Node*)malloc(sizeof(struct Node)); newNode->row = r; 
+newNode->col = c;     
+newNode->value = val;     newNode->next = NULL;     
+if (head == NULL) {         
+head = newNode;         
+return;}     
+struct Node* temp = head;     
+while (temp->next != NULL)         temp = temp->next;     
+temp->next = newNode; } 
+void display() {     
+struct Node* temp = head;     printf("Row  Col  Value\n");     while (temp != NULL) {         
+printf("%d    %d    %d\n", temp->row, temp->col, temp->value);         temp = temp->next;     } } 
+int main() {     
+int m, n, i, j, val;     printf("Enter rows and columns: ");     scanf("%d %d", &m, &n);     printf("Enter matrix elements:\n");     for (i = 0; i < m; i++) {         
+for (j = 0; j < n; j++) { 
+ scanf("%d", &val);             
+if (val != 0)                 insert(i, j, val);}}     printf("\nSparse Matrix (Linked List Representation):\n");     
+display();     
+return 0; } 
+
+31)Check for modulo division, queue full and queue empty for circular queues 
+
+Program: 
+#include <stdio.h> 
+#include <stdlib.h> 
+#define SIZE 5 
+int queue[SIZE]; 
+int front = -1, rear = -1; int isFull() {     
+return ((rear + 1) % SIZE == front); } 
+int isEmpty() {     
+return (front == -1); } 
+void enqueue(int value) {     
+if (isFull()){         
+printf("Queue is Full\n");         return;     }     
+if (front == -1)         
+front = 0;     
+rear = (rear + 1) % SIZE;     queue[rear] = value;     printf("Inserted %d\n", value); } void dequeue() {     
+if (isEmpty())     
+{printf("Queue is Empty\n");         return;     }     
+printf("Deleted %d\n", queue[front]);     
+if (front == rear)         
+front = rear = -1;     
+else         
+front = (front + 1) % SIZE; } 
+void display() {     
+int i;     
+if (isEmpty())     {         
+printf("Queue is Empty\n");         return;     }     
+printf("Queue elements: ");     
+i = front;     
+while (i != rear)     {         
+printf("%d ", queue[i]);         
+i = (i + 1) % SIZE;     }     printf("%d\n", queue[i]); } 
+int main() 
+{  
+enqueue(10); 
+enqueue(20); 
+enqueue(30); 
+enqueue(40); 
+enqueue(50); 
+display(); 
+dequeue(); 
+dequeue(); 
+enqueue(60); 
+enqueue(70); 
+display(); 
+return 0;
+} 
